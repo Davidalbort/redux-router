@@ -7,7 +7,7 @@ function Link ({listLink,typeList}){
     <NavLink 
       
       style={( {isActive}) =>({
-        color: isActive? 'orange': 'white',
+        color: isActive? 'orange': 'black',
       })}
       to={link.to} 
       end

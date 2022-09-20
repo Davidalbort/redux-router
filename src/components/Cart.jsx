@@ -1,10 +1,19 @@
 
 import React from 'react'
+import {  useSelector } from 'react-redux'
+
+
 
 const Cart = ({ListTitle    }) => {
+
+
     const handleDeleteToCart = () => {
         console.log('hey i am button delete cart')
     }
+
+    const state = useSelector(state => state.carts);
+
+    
   return (
     <table>
         <thead>
@@ -18,14 +27,17 @@ const Cart = ({ListTitle    }) => {
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th><button onClick={handleDeleteToCart}>X</button></th>
-                <th>hola</th>
-                <th>hola</th>
-                <th>hola</th>
-                <th>hola</th>
-                <th>hola</th>
-            </tr>
+            {state && state.map(cart => (
+                <tr key={cart.id}>
+                    <th><button onClick={handleDeleteToCart}>X</button></th>
+                    <th></th>
+                    <th>{cart.nombre}</th>
+                    <th>{cart.precio}</th>
+                    <th>{cart.cantidad}</th>
+                    <th>{cart.precio*cart.cantidad}</th>
+                </tr>
+
+            ))}
         </tbody>
     </table>
   )
